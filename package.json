@@ -1,0 +1,37 @@
+{
+    "name": "vscode-gitbuild",
+    "version": "0.1.0",
+    "description": "Visual Studio Code Git build status plugin",
+    "main": "./build/src/extension",
+    "scripts": {
+        "compile": "tsc -watch -p ./",
+        "vscode:prepublish": "tsc -p ./",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "engines": {
+        "vscode": "^1.20.0"
+    },
+    "activationEvents": [
+        "workspaceContains:.vsgitbuild"
+    ],
+    "keywords": [
+        "visual",
+        "studio",
+        "code",
+        "git",
+        "build",
+        "status"
+    ],
+    "author": "Grzegorz Judas <grzegorz.judas@gmail.com>",
+    "publisher": "grzegorzjudas",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/node": "^9.6.0",
+        "typescript": "^2.7.2",
+        "vscode": "^1.1.14"
+    },
+    "dependencies": {
+        "node-fetch": "^2.1.1"
+    }
+}
