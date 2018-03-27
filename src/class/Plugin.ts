@@ -45,7 +45,6 @@ export default class GitBuildPlugin {
         const requestUpdate = async () => {
             statusUpdate(BuildStatus.UNKNOWN);
             const { status, builds } = await this.git.getBuildStatus();
-            console.log(status, builds);
             statusUpdate(status);
 
             this.buildList.setList(builds);

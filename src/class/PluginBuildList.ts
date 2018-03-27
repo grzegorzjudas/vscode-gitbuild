@@ -1,6 +1,6 @@
 import * as opn from 'opn';
 
-import { window, QuickPickItem, QuickPickOptions } from 'vscode';
+import { window, QuickPickItem } from 'vscode';
 import { GitBuild, stringToBuildStatus } from './GitBuild';
 
 import { statusToIcon } from './PluginStatus';
@@ -22,21 +22,12 @@ const withLeadingZero = (number) => {
     else return `${number}`;
 }
 
-export interface GithubBuildListItem extends QuickPickItem {
+interface GithubBuildListItem extends QuickPickItem {
     url: string
 }
 
 export default class PluginBuildList {
     private items: GithubBuildListItem[] = [];
-    private options: QuickPickOptions;
-
-    constructor () {
-        this.options = <QuickPickOptions> {
-            onDidSelectItem: (item: GithubBuildListItem) => {
-                console.log(item.url);
-            }
-        };
-    }
 
     public setList (items: GitBuild[]) {
         this.items = items.map((item) => {
@@ -50,6 +41,8 @@ export default class PluginBuildList {
     }
 
     public show () {
-        window.showQuickPick(this.items, this.options);
+        window.showQuickPick(this.items).then((item) => {
+            if (item && item.url) opn(item.url);
+        });
     }
 }
