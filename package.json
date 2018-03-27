@@ -1,7 +1,7 @@
 {
     "name": "vscode-gitbuild",
     "version": "0.1.1",
-    "displayName": "Github Build",
+    "displayName": "Github Build Status",
     "description": "Visual Studio Code Github build status plugin",
     "main": "./build/src/extension",
     "scripts": {
