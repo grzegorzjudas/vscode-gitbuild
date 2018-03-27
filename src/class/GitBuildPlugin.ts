@@ -58,7 +58,7 @@ export default class GitBuildPlugin {
                 requestUpdate();
             };
 
-            setInterval(requestUpdate, 30 * 1000);
+            setInterval(requestUpdate, this.settings.get('pooling') * 1000);
         });
     }
 }
