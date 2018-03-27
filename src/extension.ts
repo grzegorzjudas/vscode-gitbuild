@@ -1,6 +1,6 @@
 import { workspace, ExtensionContext } from 'vscode';
-import GitBuildPlugin from './class/GitBuildPlugin';
+import Plugin from './class/Plugin';
 
 export function activate (context: ExtensionContext) {
-    const plugin = new GitBuildPlugin(context);
+    const plugin = new Plugin(context);
 }

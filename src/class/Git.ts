@@ -5,7 +5,7 @@ import * as fs from 'fs';
 import { workspace, WorkspaceFolder } from 'vscode';
 
 import Credentials from './Credentials';
-import { BuildStatus } from './PluginStatus';
+import { GitBuild, BuildStatus, stringToBuildStatus } from './GitBuild';
 
 interface GithubStatusRequestOptions {
     url: string;
@@ -69,7 +69,7 @@ export default class Git {
         this.auth = auth;
     }
 
-    public async getBuildStatus () : Promise<BuildStatus> {
+    public async getBuildStatus () : Promise<{ status: BuildStatus, builds: GitBuild[] }> {
         const url = `${this.url}/api/v3/repos/${this.org}/${this.repo}/commits/${this.commit}/status`;
         const authHeader = Buffer.from(`${this.auth.username}:${this.auth.password}`).toString('base64');
 
@@ -84,12 +84,25 @@ export default class Git {
         }).then((res) => {
             return res.json();
         }).then((res) => {
+            let status : BuildStatus;
+
             switch (res.state) {
-                case 'pending': return BuildStatus.PENDING;
-                case 'success': return BuildStatus.SUCCESS;
-                case 'failure': return BuildStatus.FAILURE;
-                default: return BuildStatus.UNKNOWN;
+                case 'pending': { status = BuildStatus.PENDING; break; }
+                case 'success': { status = BuildStatus.SUCCESS; break; }
+                case 'failure': { status = BuildStatus.FAILURE; break; }
+                default: { status = BuildStatus.UNKNOWN; break }
             }
+
+            return {
+                status,
+                builds: res.statuses.map((build) => {
+                    build.created_at = new Date(build.created_at);
+                    build.updated_at = new Date(build.updated_at);
+                    build.state = stringToBuildStatus(build.state);
+
+                    return build;
+                })
+            };
         });
     }
 

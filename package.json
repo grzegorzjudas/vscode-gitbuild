@@ -21,6 +21,7 @@
         "vscode": "^1.20.0"
     },
     "activationEvents": [
+        "onCommand:githubbuild.listBuilds",
         "workspaceContains:.vsgitbuild"
     ],
     "keywords": [
@@ -30,6 +31,14 @@
         "build",
         "status"
     ],
+    "contributes": {
+        "commands": [
+            {
+                "command": "githubbuild.listBuilds",
+                "title": "Github build: List all builds"
+            }
+        ]
+    },
     "author": {
         "name": "Grzegorz Judas",
         "email": "grzegorz.judas@gmail.com"
@@ -43,6 +52,7 @@
         "vscode": "^1.1.14"
     },
     "dependencies": {
-        "node-fetch": "^2.1.1"
+        "node-fetch": "^2.1.1",
+        "opn": "^5.3.0"
     }
 }
