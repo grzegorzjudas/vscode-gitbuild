@@ -1,7 +1,8 @@
 {
     "name": "vscode-gitbuild",
-    "version": "0.1.0",
-    "description": "Visual Studio Code Git build status plugin",
+    "version": "0.1.1",
+    "displayName": "Github Build",
+    "description": "Visual Studio Code Github build status plugin",
     "main": "./build/src/extension",
     "scripts": {
         "compile": "tsc -watch -p ./",
@@ -9,6 +10,13 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "postinstall": "node ./node_modules/vscode/bin/install"
     },
+    "repository": {
+        "url": "https://github.com/grzegorzjudas/vscode-gitbuild"
+    },
+    "categories": [
+        "SCM Providers",
+        "Other"
+    ],
     "engines": {
         "vscode": "^1.20.0"
     },
@@ -18,13 +26,16 @@
     "keywords": [
         "visual",
         "studio",
-        "code",
-        "git",
+        "github",
         "build",
         "status"
     ],
-    "author": "Grzegorz Judas <grzegorz.judas@gmail.com>",
+    "author": {
+        "name": "Grzegorz Judas",
+        "email": "grzegorz.judas@gmail.com"
+    },
     "publisher": "grzegorzjudas",
+    "icon": "images/icon.png",
     "license": "ISC",
     "devDependencies": {
         "@types/node": "^9.6.0",
