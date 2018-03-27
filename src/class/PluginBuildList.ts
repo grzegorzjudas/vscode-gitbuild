@@ -41,6 +41,8 @@ export default class PluginBuildList {
     }
 
     public show () {
+        if (this.items.length === 0) return;
+
         window.showQuickPick(this.items).then((item) => {
             if (item && item.url) opn(item.url);
         });

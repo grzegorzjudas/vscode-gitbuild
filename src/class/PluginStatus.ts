@@ -46,4 +46,8 @@ export default class PluginStatus {
     public hide () {
         this.element.hide();
     }
+
+    public setHint (hint: string) {
+        this.element.tooltip = hint;
+    }
 }

@@ -45,7 +45,15 @@ export default class GitBuildPlugin {
         const requestUpdate = async () => {
             statusUpdate(BuildStatus.UNKNOWN);
             const { status, builds } = await this.git.getBuildStatus();
-            statusUpdate(status);
+
+            if (builds.length === 0) {
+                statusUpdate(BuildStatus.UNKNOWN);
+                this.status.setHint('No builds available. Is the commit pushed to remote?');
+            }
+            else {
+                statusUpdate(status);
+                this.status.setHint('See available builds');
+            }
 
             this.buildList.setList(builds);
         };
