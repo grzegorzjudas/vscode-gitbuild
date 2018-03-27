@@ -22,6 +22,9 @@ In order to enable the plugin, you need to have a ".vsgitbuild" file in your wor
 ```
 
 **username** - Your Github username that'll be used to fetch the status
+
 **password** - Either your password or auth token; it is **strongly** recommended to **not** use your password, but auth token - for details, see [here](https://blog.github.com/2013-05-16-personal-api-tokens/)
+
 **strictTls** - If set to false, plugin will **not** check certificate validity when connecting through HTTPS. Not recommended, however, may be required on some systems
+
 **pooling** - In seconds, defines how often the app will check the build status (basides commit change re-check)
