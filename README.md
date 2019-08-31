@@ -1,12 +1,12 @@
-# VSCode Github build status
+# VSCode GitHub build status
 
-A plugin that shows current build status fetched from Github (if available).
+A plugin that shows current build status fetched from GitHub (if available).
 
 ![Screenshot](images/screenshot.png)
 
 ## How it works
 
-When ".vsgitbuild" is available in the workspace, plugin looks for ".git" folder down to the root folder, starting from workspace directory. When found, it'll fetch repository information and use configuration in the file to fetch build status information from Github API every N seconds (and every time current commit changes - if you commit something, or if branch changes).
+When ".vsgitbuild" is available in the workspace, plugin looks for ".git" folder down to the root folder, starting from workspace directory. When found, it'll fetch repository information and use configuration in the file to fetch build status information from GitHub API every N seconds (and every time current commit changes - if you commit something, or if branch changes).
 
 ## Enabling
 
@@ -22,7 +22,7 @@ In order to enable the plugin, you need to have a ".vsgitbuild" file in your wor
 ```
 
 #### username
-Your Github username that'll be used to fetch the status
+Your GitHub username that'll be used to fetch the status
 
 #### password
 Either your password or auth token; it is **strongly** recommended to **not** use your password, but auth token - for details, see [here](https://blog.github.com/2013-05-16-personal-api-tokens/)
