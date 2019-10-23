@@ -1,8 +1,8 @@
 {
     "name": "vscode-gitbuild",
     "version": "1.0.1",
-    "displayName": "Github Build Status",
-    "description": "Visual Studio Code Github build status plugin",
+    "displayName": "GitHub Build Status",
+    "description": "Visual Studio Code GitHub build status plugin",
     "main": "./build/src/extension",
     "scripts": {
         "compile": "tsc -watch -p ./",
@@ -35,7 +35,7 @@
         "commands": [
             {
                 "command": "githubbuild.listBuilds",
-                "title": "Github build: List all builds"
+                "title": "GitHub build: List all builds"
             }
         ]
     },
