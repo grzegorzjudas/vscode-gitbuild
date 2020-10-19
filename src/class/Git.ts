@@ -29,7 +29,7 @@ export default class Git {
 
         const [ url, org, repo ] = this.getConfigFromFile();
 
-        this.url = 'https://' + URL.parse(url).href;
+        this.url = 'https://api.github.com';
         this.org = org;
         this.repo = repo;
         this.commit = Git.getCurrentCommit();
@@ -70,7 +70,7 @@ export default class Git {
     }
 
     public async getBuildStatus () : Promise<{ status: BuildStatus, builds: GitBuild[] }> {
-        const url = `${this.url}/api/v3/repos/${this.org}/${this.repo}/commits/${this.commit}/status`;
+        const url = `${this.url}/repos/${this.org}/${this.repo}/commits/${this.commit}/status`;
         const authHeader = Buffer.from(`${this.auth.username}:${this.auth.password}`).toString('base64');
 
         return fetch(url, {
